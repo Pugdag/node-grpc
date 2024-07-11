@@ -1,0 +1,45 @@
+import { PendingReqs, IData, IStream, ServiceClientConstructor, PugdagdPackage, SubscriberItemMap, RPC as Rpc } from '../types/custom-types';
+export declare class Client {
+    stream: IStream;
+    options: any;
+    pending: PendingReqs;
+    intakeHandler: Function | undefined;
+    reconnect: boolean;
+    client: any | undefined;
+    reconnect_dpc: number | undefined;
+    verbose: boolean;
+    log: Function;
+    proto: PugdagdPackage | undefined;
+    subscribers: SubscriberItemMap;
+    isConnected: boolean;
+    connectCBs: Function[];
+    connectFailureCBs: Function[];
+    errorCBs: Function[];
+    disconnectCBs: Function[];
+    connectionPhase: boolean;
+    disableConnectionCheck: boolean;
+    constructor(options: any);
+    getServiceClient(): ServiceClientConstructor;
+    connect(): Promise<unknown>;
+    _connect(): Promise<unknown>;
+    _reconnect(reason: string): void;
+    _connectClient(): Promise<void>;
+    _setConnected(isConnected: boolean): void;
+    onConnect(callback: Function): void;
+    onConnectFailure(callback: Function): void;
+    onError(callback: Function): void;
+    onDisconnect(callback: Function): void;
+    disconnect(): void;
+    clearPending(reason?: string): void;
+    close(): void;
+    createStream(): any;
+    initIntake(stream: IStream): void;
+    handleIntake(o: IData): void;
+    setIntakeHandler(fn: Function): void;
+    post(name: string, args?: any): boolean;
+    call(method: string, data: any): Promise<unknown>;
+    subscribe<T>(subject: string, data: any, callback: Function): Rpc.SubPromise<T>;
+    subject2EventName(subject: string): string;
+    unSubscribe(subject: string, uid?: string): void;
+}
+//# sourceMappingURL=client.d.ts.map

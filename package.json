@@ -1,0 +1,40 @@
+{
+  "name": "@pugdag/grpc",
+  "version": "1.4.1",
+  "description": "Node gRPC interface for Pugdag",
+  "main": "dist/index.js",
+  "authors": [
+    {
+      "name": "ASPECTRON Inc",
+      "email": "info@aspectron.com"
+    },
+    {
+      "name": "Pugdag Developers",
+      "email": "lemois1337@protonmail.com"
+    }
+  ],
+  "license": "ISC",
+  "scripts": {
+    "watch": "tsc --watch",
+    "prepublishOnly": "rm -rf ./dist && rm -f package-lock.json && npm install --also=dev && tsc"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "*",
+    "@grpc/proto-loader": "*",
+    "@aspectron/flow-async": "^0.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.9",
+    "ts-node": "^9.0.0",
+    "typescript": "*"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "types",
+    "proto",
+    "README.md",
+    "tsconfig.json",
+    "index.ts"
+  ]
+}
